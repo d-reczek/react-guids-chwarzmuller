@@ -5,15 +5,18 @@ import "./Expenses.css";
 import { useState } from "react";
 
 const Expenses = ({ items }) => {
-  const [yearValue, setYearValue] = useState(null);
-  const onSelecetDateValue = year => {
-    setYearValue(year);
-    console.log(yearValue);
+  const [filtredYear, setFiltredYear] = useState("2020");
+  const changeYearFilter = year => {
+    setFiltredYear(year);
+    console.log(filtredYear);
   };
   return (
     <>
       <Card className="expenses">
-        <ExpensesFilter saveYearValue={onSelecetDateValue} />
+        <ExpensesFilter
+          filtredYear={filtredYear}
+          onChangeFilter={changeYearFilter}
+        />
         <ExpenseItem
           title={items[0].title}
           amount={items[0].amount}
