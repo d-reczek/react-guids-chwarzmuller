@@ -24,7 +24,13 @@ const ExpenseForm = ({ onSaveExpensesData }) => {
   };
   const submitHandler = e => {
     e.preventDefault();
-    onSaveExpensesData(userInput);
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate),
+    };
+    onSaveExpensesData(expenseData);
+
     setUserInput({ enteredTitle: "", enteredAmount: "", enteredDate: "" });
   };
   return (
